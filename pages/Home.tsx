@@ -24,9 +24,6 @@ const Home: React.FC = () => {
               Your browser does not support the video tag.
             </video>
             
-            <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-4 py-2 rounded border border-aictual-black/10 text-xs font-bold uppercase tracking-wider text-aictual-black pointer-events-none shadow-sm">
-              Demo: Real-time Lip Sync
-            </div>
           </div>
           <p className="text-center text-aictual-gray mt-6 text-sm font-medium">
             Watch how we seamlessly transform content into multiple languages while preserving the original voice.
