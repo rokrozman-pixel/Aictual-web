@@ -106,7 +106,7 @@ const Contact: React.FC = () => {
               </div>
               
               <p className="text-center text-xs text-aictual-gray mt-4">
-                Or email us directly at <a href="mailto:partners@aictual.com" className="text-aictual-accent hover:underline">partners@aictual.com</a>
+                Or email us directly at <a href="mailto:info@aictual.com" className="text-aictual-accent hover:underline">partners@aictual.com</a>
               </p>
             </form>
           )}
