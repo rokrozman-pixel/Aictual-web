@@ -15,14 +15,14 @@ const Home: React.FC = () => {
           <div className="absolute -inset-1 bg-gradient-to-r from-aictual-accent/20 to-aictual-black/5 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-1000"></div>
           
           <div className="relative bg-black rounded-2xl overflow-hidden shadow-2xl aspect-video border border-aictual-black/10">
-            <video 
-              className="w-full h-full object-cover opacity-90"
-              controls
-              poster="/thumbnail-sample-video.png" 
-              src="/video/Final-DONE.mp4"
-            >
-              Your browser does not support the video tag.
-            </video>
+          <video 
+            className="w-full h-full object-cover opacity-90"
+            controls
+            poster="/thumbnail-sample-video.png"
+            src="https://aictual.ai/Final-DONE.mp4"
+          >
+          Your browser does not support the video tag.
+          </video>
             
           </div>
           <p className="text-center text-aictual-gray mt-6 text-sm font-medium">
