@@ -3,7 +3,7 @@ import { Mail, ArrowRight, Copy, Check, MessageSquare, Globe, Zap } from 'lucide
 
 const Contact: React.FC = () => {
   const [copied, setCopied] = useState(false);
-  const email = "rok.rozman@aictual.com";
+  const email = "rok.rozman@aictual.ai";
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(email);
