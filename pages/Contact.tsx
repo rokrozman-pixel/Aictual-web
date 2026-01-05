@@ -1,117 +1,113 @@
 import React, { useState } from 'react';
-import { Mail, CheckCircle, Video, ArrowRight } from 'lucide-react';
+import { Mail, ArrowRight, Copy, Check, MessageSquare, Globe, Zap } from 'lucide-react';
 
 const Contact: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    channelUrl: '',
-    message: ''
-  });
-  const [submitted, setSubmitted] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const email = "rok.rozman@aictual.com";
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-    // Simulate API call
-    setTimeout(() => setSubmitted(false), 5000);
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
-    <div className="pt-24 w-full">
-      <div className="px-6 md:px-12 py-12 md:py-20 max-w-4xl mx-auto text-center">
-        <span className="text-aictual-accent font-medium tracking-widest text-xs uppercase mb-4 block">Get in touch</span>
-        <h1 className="font-display text-4xl md:text-5xl font-bold mb-6 text-aictual-black">Partner With Us</h1>
-        <p className="text-lg text-aictual-gray">
-          Ready to take your content global? Fill out the form below and our team will get back to you with a custom proposal.
+    <div className="pt-24 w-full min-h-screen flex flex-col items-center">
+      {/* Hero Header */}
+      <section className="px-6 md:px-12 py-12 md:py-24 max-w-5xl mx-auto text-center">
+        <span className="text-aictual-accent font-medium tracking-widest text-xs uppercase mb-6 block animate-in fade-in slide-in-from-bottom-3 duration-700">Get Started</span>
+        <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold mb-8 text-aictual-black tracking-tighter animate-in fade-in slide-in-from-bottom-4 duration-1000">
+          Let's build <br/><span className="italic font-normal text-aictual-accent">something global.</span>
+        </h1>
+        <p className="text-xl md:text-2xl text-aictual-gray max-w-2xl mx-auto font-light leading-relaxed animate-in fade-in slide-in-from-bottom-5 duration-1000">
+          We don't do automated tickets. Every partnership starts with a direct conversation.
         </p>
-      </div>
+      </section>
 
-      <div className="px-6 md:px-12 pb-24 max-w-4xl mx-auto">
-        <div className="bg-white border border-aictual-black/10 p-8 md:p-12 rounded-3xl shadow-lg shadow-aictual-black/5">
-          {submitted ? (
-            <div className="h-96 flex flex-col items-center justify-center text-center">
-              <div className="w-20 h-20 bg-aictual-accent/20 rounded-full flex items-center justify-center mb-6">
-                <CheckCircle className="w-10 h-10 text-aictual-accent" />
-              </div>
-              <h3 className="font-display text-3xl font-bold mb-4 text-aictual-black">Application Received</h3>
-              <p className="text-aictual-gray max-w-md mx-auto">
-                Thanks for your interest in aictual. We'll review your channel and be in touch within 24 hours to discuss the next steps.
-              </p>
+      {/* Main Contact Card */}
+      <section className="px-6 md:px-12 pb-32 w-full max-w-7xl mx-auto">
+        <div className="relative group animate-in fade-in zoom-in-95 duration-1000">
+          {/* Decorative Blur Background */}
+          <div className="absolute -inset-4 bg-aictual-accent/10 rounded-[3rem] blur-2xl opacity-50 group-hover:opacity-100 transition duration-1000"></div>
+          
+          <div className="relative bg-white border border-aictual-black/5 rounded-[2.5rem] p-12 md:p-24 flex flex-col items-center text-center shadow-2xl shadow-aictual-black/5 overflow-hidden">
+            {/* Subtle Grain Overlay for the card */}
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-grain"></div>
+            
+            <div className="w-16 h-16 rounded-full bg-aictual-black flex items-center justify-center mb-10 shadow-lg">
+              <Mail className="text-white w-8 h-8" strokeWidth={1.5} />
             </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-aictual-black mb-2">Full Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    required
-                    className="w-full px-4 py-3 bg-aictual-bg/30 border border-aictual-black/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-aictual-accent focus:border-aictual-accent text-aictual-black placeholder-aictual-gray/50 transition-all"
-                    placeholder="Jane Doe"
-                    value={formData.name}
-                    onChange={(e) => setFormData({...formData, name: e.target.value})}
-                  />
+
+            <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-aictual-gray mb-6">Direct Inquiry</h2>
+            
+            <div className="flex flex-col items-center gap-6">
+              <a 
+                href={`mailto:${email}`}
+                className="font-display text-3xl md:text-5xl lg:text-4xl font-bold text-aictual-black hover:text-aictual-accent transition-colors duration-300 break-all"
+              >
+                {email}
+              </a>
+              
+              <button 
+                onClick={copyToClipboard}
+                className="flex items-center gap-2 px-6 py-3 rounded-full bg-aictual-bg border border-aictual-black/5 text-sm font-medium hover:bg-white hover:border-aictual-accent transition-all duration-300 active:scale-95"
+              >
+                {copied ? (
+                  <>
+                    <Check size={16} className="text-green-500" />
+                    <span>Copied to clipboard</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy size={16} className="text-aictual-gray" />
+                    <span>Copy email address</span>
+                  </>
+                )}
+              </button>
+            </div>
+
+            <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-12 w-full max-w-4xl border-t border-aictual-black/5 pt-16">
+              <div className="flex flex-col items-center gap-4">
+                <div className="p-3 bg-aictual-accent/5 rounded-xl">
+                  <MessageSquare size={24} className="text-aictual-accent" />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-aictual-black mb-2">Email Address</label>
-                  <input
-                    type="email"
-                    id="email"
-                    required
-                    className="w-full px-4 py-3 bg-aictual-bg/30 border border-aictual-black/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-aictual-accent focus:border-aictual-accent text-aictual-black placeholder-aictual-gray/50 transition-all"
-                    placeholder="jane@studio.com"
-                    value={formData.email}
-                    onChange={(e) => setFormData({...formData, email: e.target.value})}
-                  />
+                  <h4 className="font-bold text-aictual-black mb-1">Response Time</h4>
+                  <p className="text-sm text-aictual-gray">Under 12 hours</p>
                 </div>
               </div>
               
-              <div>
-                <label htmlFor="channel" className="block text-sm font-medium text-aictual-black mb-2 flex items-center gap-2">
-                  <Video size={14} className="text-aictual-gray" /> Channel / Portfolio URL
-                </label>
-                <input
-                  type="url"
-                  id="channel"
-                  required
-                  className="w-full px-4 py-3 bg-aictual-bg/30 border border-aictual-black/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-aictual-accent focus:border-aictual-accent text-aictual-black placeholder-aictual-gray/50 transition-all"
-                  placeholder="https://youtube.com/@yourchannel"
-                  value={formData.channelUrl}
-                  onChange={(e) => setFormData({...formData, channelUrl: e.target.value})}
-                />
+              <div className="flex flex-col items-center gap-4">
+                <div className="p-3 bg-aictual-accent/5 rounded-xl">
+                  <Globe size={24} className="text-aictual-accent" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-aictual-black mb-1">Office Hours</h4>
+                  <p className="text-sm text-aictual-gray">Amsterdam (CET)</p>
+                </div>
               </div>
 
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-aictual-black mb-2">Tell us about your needs</label>
-                <textarea
-                  id="message"
-                  required
-                  rows={4}
-                  className="w-full px-4 py-3 bg-aictual-bg/30 border border-aictual-black/10 rounded-xl focus:outline-none focus:ring-1 focus:ring-aictual-accent focus:border-aictual-accent text-aictual-black placeholder-aictual-gray/50 resize-none transition-all"
-                  placeholder="Which languages are you targeting? What is your typical video length?"
-                  value={formData.message}
-                  onChange={(e) => setFormData({...formData, message: e.target.value})}
-                ></textarea>
+              <div className="flex flex-col items-center gap-4">
+                <div className="p-3 bg-aictual-accent/5 rounded-xl">
+                  <Zap size={24} className="text-aictual-accent" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-aictual-black mb-1">Fast Onboarding</h4>
+                  <p className="text-sm text-aictual-gray">Ready in 24 hours</p>
+                </div>
               </div>
-              
-              <div className="pt-4">
-                <button type="submit" className="w-full group relative px-8 py-4 bg-aictual-black text-white text-lg font-medium overflow-hidden transition-all hover:shadow-lg">
-                    <span className="relative z-10 flex items-center justify-center gap-2">
-                        Submit Application <ArrowRight className="w-5 h-5" />
-                    </span>
-                    <div className="absolute inset-0 bg-aictual-gray transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></div>
-                </button>
-              </div>
-              
-              <p className="text-center text-xs text-aictual-gray mt-4">
-                Or email us directly at <a href="mailto:info@aictual.com" className="text-aictual-accent hover:underline">info@aictual.com</a>
-              </p>
-            </form>
-          )}
+            </div>
+          </div>
         </div>
-      </div>
+
+        {/* Next Steps Footer */}
+        <div className="mt-20 flex flex-col md:flex-row items-center justify-between gap-8 px-6">
+          <div className="text-left max-w-md">
+            <h3 className="font-display font-bold text-2xl mb-2 text-aictual-black">What happens next?</h3>
+            <p className="text-aictual-gray">We'll review your content, prepare a custom demo of your voice in 3 languages, and schedule a brief strategy call.</p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
