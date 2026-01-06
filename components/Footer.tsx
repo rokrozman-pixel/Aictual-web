@@ -59,14 +59,8 @@ const Footer: React.FC = () => {
             © {new Date().getFullYear()} aictual Inc. All rights reserved.
           </p>
           <div className="flex items-center gap-8">
-            <a href="#" className="text-white/40 hover:text-aictual-accent transition-all transform hover:scale-110">
-              <Twitter size={18} />
-            </a>
-            <a href="#" className="text-white/40 hover:text-aictual-accent transition-all transform hover:scale-110">
+            <a href="https://www.linkedin.com/company/aictual" className="text-white/40 hover:text-aictual-accent transition-all transform hover:scale-110">
               <Linkedin size={18} />
-            </a>
-            <a href="#" className="text-white/40 hover:text-aictual-accent transition-all transform hover:scale-110">
-              <Github size={18} />
             </a>
           </div>
         </div>
